@@ -29,9 +29,9 @@
   display: block;
 }
 
-/* img {
+img {
   display: none;
-} */
+}
 
 #btn__Iniciar {
   border: 2px solid var(--cor-primaria);

@@ -3,31 +3,33 @@ import { useState } from "react";
 
 const Form = ({ setFinancas }) => {
   const [descricao, setDescricao] = useState("");
-  const [valor, setValor] = useState("");
+  const [valor, setValor] = useState(0);
   const [tipo, setTipo] = useState("Entradas");
 
   function enviarDados() {
-    const numeroNovo = Number(valor);
-    if (tipo === "Despesas") {
-      const novoValor = numeroNovo * -1;
-
+    if(valor > 0){
+      const numeroNovo = Number(valor);
+      if (tipo === "Despesas") {
+        const novoValor = numeroNovo * -1;
+  
+        setFinancas((financas) => [
+          ...financas,
+          { id: Math.random(), descricao, valor: novoValor, tipo },
+        ]);
+  
+        setDescricao("");
+        setValor("");
+        return;
+      }
+  
       setFinancas((financas) => [
         ...financas,
-        { id: Math.random(), descricao, valor: novoValor, tipo },
+        { id: Math.random(), descricao, valor: numeroNovo, tipo },
       ]);
-
+  
       setDescricao("");
-      setValor("");
-      return;
+      setValor(0);
     }
-
-    setFinancas((financas) => [
-      ...financas,
-      { id: Math.random(), descricao, valor: numeroNovo, tipo },
-    ]);
-
-    setDescricao("");
-    setValor(0);
   }
 
   return (

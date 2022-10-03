@@ -29,8 +29,8 @@ const DivContainer = ({ financas, setFinancas, tipos, setFilter }) => {
               <p>{financa.tipo}</p>
             </div>
             <p>R${financa.valor}</p>
-            <div className="deletar__icone">
-              <BsTrash onClick={() => deletarFinanca(financa.id)} />
+            <div className="deletar__icone" onClick={() => deletarFinanca(financa.id)}>
+              <BsTrash />
             </div>
           </div>
         ))}
